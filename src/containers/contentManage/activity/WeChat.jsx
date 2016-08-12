@@ -3,11 +3,10 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import _ from 'underscore'
 import {Table,Icon,Button,DatePicker,Modal,Tabs} from 'antd';
-import styles from "./AllTuso.less"
+import styles from "./WeChat.less"
 import moment from 'moment'
-import SearchInput from '../../components/Common/SearchInput'
-import ViewTuso from '../../components/contentManage/ViewTuso'
-import {fetchAllTuso,likeTuso,fetchTuso,dislikeTuso} from '../../actions/tuso'
+import SearchInput from './../../../components/Common/SearchInput'
+
 
 const RangePicker = DatePicker.RangePicker;
 const TabPane = Tabs.TabPane;
@@ -19,11 +18,6 @@ class MyComponent extends React.Component {
           dateformat: [], //搜索mormat后的数据
           searchOleData:[],
           searchValue: "",
-          addVisible: false, //新增随记弹出框状态
-          viewVisible: false, //查看随记弹出框状态
-          viewStatus: false, //查看的随记是否需要翻转
-          essayist: "", //数据需要改动，模态框的动态数据
-          upLoadTusoList:[],//我的图说已上传的图片的列表
           startValue:null,//日期开始
           endValue:null,//日期结束
           searchToday:false,//查询今天数据
@@ -33,30 +27,30 @@ class MyComponent extends React.Component {
         }
     }
    componentDidMount() {
-    this.props.fetchAllTuso((this.state.current-1)*this.state.pageSize, this.state.current*this.state.pageSize);
-   }
+
+       }
    componentWillReceiveProps(nextProps) {
-    this.setState({
-      data:nextProps.data.toJS(),
-      dateformat:nextProps.data.toJS(),
-      searchOleData:nextProps.data.toJS(),
-      allCount:nextProps.allCount
-    })
-    if(this.state.essayist.uuid){
-      nextProps.data.map((items, index) => {
-        if(items.uuid==this.state.essayist.uuid){
-          this.setState({
-            "essayist":{
-              "modalViewImages":items.images,
-              "user":items.user,
-              "starred_count":items.starred_count,
-              "timestamp":items.timestamp,
-              "uuid":items.uuid
-            }
-          })
-        }
-      })
-    }
+    // this.setState({
+    //   data:nextProps.data.toJS(),
+    //   dateformat:nextProps.data.toJS(),
+    //   searchOleData:nextProps.data.toJS(),
+    //   allCount:nextProps.allCount
+    // })
+    // if(this.state.essayist.uuid){
+    //   nextProps.data.map((items, index) => {
+    //     if(items.uuid==this.state.essayist.uuid){
+    //       this.setState({
+    //         "essayist":{
+    //           "modalViewImages":items.images,
+    //           "user":items.user,
+    //           "starred_count":items.starred_count,
+    //           "timestamp":items.timestamp,
+    //           "uuid":items.uuid
+    //         }
+    //       })
+    //     }
+    //   })
+    // }
     }
     // 选择日期后重新渲染数据
     onDateChange(value) {
@@ -75,31 +69,7 @@ class MyComponent extends React.Component {
 
         this.setState({dateformat: dataTemp,searchOleData:dataTemp,searchToday:false,current: 1})
     }
-    /*
-     预览模态框显示
-     */
-    handleCancel(e) {
-        this.setState({addVisible: false});
-    }
-    showViewModal(data, modalView) { //显示查看随记弹出框
-        this.setState({
-            viewVisible: true,
-            viewStatus: data,
-            "essayist":{
-              "modalViewImages":modalView.images,
-              "user":modalView.user,
-              "starred_count":modalView.starred_count,
-              "timestamp":modalView.timestamp,
-              "uuid":modalView.uuid
-            }
-        });
-    }
-    handleViewOk() { //查看随记弹出框确定点击事件
-        this.setState({viewVisible: false});
-    }
-    handleViewCancel(e) {
-        this.setState({viewVisible: false});
-    }
+
     // 查询今天日期对照的记录
 handleSerchToday() {
     let todayMorning = new Date();
@@ -126,21 +96,9 @@ handleChangePage(data) {
 handleShowSizeChange(current, pageSize){
   this.setState({pageSize:pageSize})
 }
-//点赞
-starred(){
-  let that=this;
-likeTuso(this.state.essayist.uuid,this.props.user.get('token'),function(uuid){
-  that.props.fetchTuso(uuid,that.props.user.get('token'))
-});
-}
-// 取消点赞
-cancelPraise() {
-  let that=this;
-  dislikeTuso(this.state.essayist.uuid,this.props.user.get('token'),function(uuid){
-  that.props.fetchTuso(uuid,that.props.user.get('token'))
-});
 
-}
+
+
     render() {
       // 列数字段
         const columns = [
@@ -159,7 +117,7 @@ cancelPraise() {
                 render: (text,record) => {
                     let img = new Image();
                     let imgWidth;
-                    img.src = text[0].display_image.display_url;
+                    img.src ="http://aliceblog.oss-cn-hangzhou.aliyuncs.com/img/menu6.png";
                     if (img.width <= img.height*1.6) {
                         imgWidth = {
                             width: "100%"
@@ -169,40 +127,40 @@ cancelPraise() {
                             height: "100%"
                         }
                     }
-                    return <a className="coverBox" onClick={this.showViewModal.bind(this, true, record)}><img src={text[0].display_image.display_url} style={imgWidth}/></a>
+                    return <a className="coverBox"><img src="http://aliceblog.oss-cn-hangzhou.aliyuncs.com/img/menu6.png" style={imgWidth}/></a>
                 }
             }, {
-                title: '照片数量',
-                dataIndex: 'photo_count',
-                key: 'photo_count',
-                width: '10%',
-                sorter: (a, b) => a.photo_count - b.photo_count
+                dataIndex: '活动名称',
+                key: 'name',
+                width: '10%'
             },{
-                title: '点赞数量',
-                dataIndex: 'starred_count',
-                key: 'starred_count',
+                title: '活动链接',
+                dataIndex: 'url',
+                key: 'url',
                 width: '10%',
                 sorter: (a, b) => a.starred_count - b.starred_count
             }, {
-                title: '发布时间',
+                title: '开始时间',
                 dataIndex: 'timestamp',
                 key: 'timestamp',
                 width: '13%',
                 sorter: (a, b) => (Date.parse(a.timestamp) - Date.parse(b.timestamp)) / 3600 / 1000,
                 render: (text) => <span>
-                        {moment(text).format('YYYY-MM-DD hh:mm:ss')}</span>
+                        {"2016-6-6"
+                          // moment(text).format('YYYY-MM-DD hh:mm:ss')
+                        }</span>
             }, {
-                title: '发布人ID',
+                title: '结束时间',
                 dataIndex: 'user',
                 key: 'user',
                 width: '10%',
-                render: (text) => <span>{text.id}</span>
+                render: (text) => <span>{"2017-11-20"}</span>
             }, {
-                title: '发布人昵称',
+                title: '状态',
                 dataIndex: 'user.nickname',
                 key: 'user.nickname',
                 width: '13%',
-                render: (text) => <span>{text}</span>
+                render: (text) => <span>{"进行中"}</span>
             }
         ];
         return (
@@ -213,12 +171,11 @@ cancelPraise() {
                             <TabPane tab={this.props.selectMenuName} key="1">
                                 <div className="inputBox">
                                   <RangePicker value={[this.state.startValue,this.state.endValue]} showTime format="yyyy/MM/dd HH:mm:ss" onChange={this.onDateChange.bind(this)}/>
-                                  <span className="searchBox"><Button type="primary" onClick={this.handleSerchToday.bind(this)}>{this.state.searchToday?"查询所有":"查询今天"}</Button></span>
                                 </div>
                                 <div className="ant-layout-container">
                                     <Table onChange={this.handleChangePage.bind(this)}
                                       columns={columns}
-                                      dataSource={this.state.dateformat}
+                                      dataSource={this.props.data}
                                       pagination={{
                                         pageSize: this.state.pageSize,
                                         total:this.state.allCount,
@@ -232,20 +189,7 @@ cancelPraise() {
                         </Tabs>
                     </div>
                 </div>
-                <Modal
-                  wrapClassName="vertical-center-modal viewEssay"
-                  visible={this.state.viewVisible}
-                  onOk={this.handleViewOk.bind(this)}
-                  footer={[]}
-                  onCancel={this.handleViewCancel.bind(this)}>
-                 <ViewTuso
-                   allTuso
-                   starred={this.starred.bind(this)}
-                   cancelPraise={this.cancelPraise.bind(this)}
-                   viewStatus={this.state.viewStatus}
-                   essayist={this.state.essayist}
-                   handleViewCancel={this.handleViewCancel.bind(this)}></ViewTuso>
-               </Modal>
+
             </div>
         )
     }
@@ -253,16 +197,29 @@ cancelPraise() {
 
 function mapStateToProps(state) {
     return {
-        data:state.getIn(["tuso"]).get("all"),
-        allCount:state.getIn(["tuso"]).get("allCount"),
+        data: [{
+  key: '1',
+  id:1,
+  name:"中秋月饼大比拼",
+  url:"www.baidu.com"
+}, {
+  key: '2',
+id:2,
+name:"天上掉下中介费",
+url:"www.baidu.com"
+}, {
+  key: '3',
+  id:3,
+  name:"好友助力领红包",
+  url:"www.sina.com"
+}],
+
   }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-      fetchAllTuso: bindActionCreators(fetchAllTuso, dispatch),
-      // likeTuso:bindActionCreators(likeTuso, dispatch),
-      fetchTuso:bindActionCreators(fetchTuso, dispatch),
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MyComponent)

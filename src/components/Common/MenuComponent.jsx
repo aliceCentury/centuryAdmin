@@ -17,7 +17,7 @@ class MyComponent extends React.Component {
     }
 
     handleClick(e) {
-      this.props.navigationDate[0].menuDate.map((items, index) => {
+      this.props.menuDate.map((items, index) => {
         items.childrenMenu.map((childrenItems, childrenIndex) => {
           if(childrenItems.id==e.key){
             this.props.goLink(childrenItems,e.keyPath);
@@ -34,10 +34,10 @@ handleOpen(e){
             <div className={styles.root}>
                 <div className="ant-layout-aside">
                     <aside className="ant-layout-sider">
-                      <div className="coverTop">TUSO运营管理系统</div>
+                      <div className="coverTop">{"21世纪管理系统"}</div>
 
                         <Menu mode="inline" theme="dark" onClick={this.handleClick.bind(this)} onOpen={this.handleOpen.bind(this)} selectedKeys={[this.props.defaultSelectedKeys]} defaultOpenKeys={this.props.defaultOpenKeys}>
-                            {this.props.navigationDate[0].menuDate.map((items, index) => {
+                            {this.props.menuDate.map((items, index) => {
                                 return (
                                     <SubMenu key={items.id} title={< span > <Icon type={items.icon}/>
                                         {items.name} < /span>}>

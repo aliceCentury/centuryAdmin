@@ -8,7 +8,7 @@ export function ContentManage(Component){
 class MyComponent extends React.Component {
     constructor(props) {
         super(props)
-        this.props.navigationDate[0].menuDate.map((items, index) => {
+        this.props.menuDate.map((items, index) => {
           items.childrenMenu.map((childrenItems, childrenIndex) => {
             if(window.location.hash.indexOf(childrenItems.link)>-1){
               localStorage.path= JSON.stringify(childrenItems);
@@ -22,15 +22,15 @@ class MyComponent extends React.Component {
 
         this.state = {
             defaultSelectedKeys:JSON.parse(localStorage.path).id+""||"2",
-            selectMenuName:JSON.parse(localStorage.path).name||"我的图说",
-            defaultOpen:JSON.parse(localStorage.defaultOpen)||["1","4"]
+            selectMenuName:JSON.parse(localStorage.path).name||"21世纪",
+            defaultOpen:JSON.parse(localStorage.defaultOpen)||["1","5","8","11"]
         }
     }
     shouldComponentUpdate(nextProps, nextState){
       this.setState({
         faultSelectedKeys: JSON.parse(localStorage.path).id+""||"2",
-        selectMenuName:JSON.parse(localStorage.path).name||"我的图说",
-        defaultOpen:JSON.parse(localStorage.defaultOpen)||["1","4"]
+        selectMenuName:JSON.parse(localStorage.path).name||"21世纪",
+        defaultOpen:JSON.parse(localStorage.defaultOpen)||["1","5","8","11"]
   });
       if (_.isEqual(nextProps, this.props) && _.isEqual(nextState, this.state)) return false
       return true

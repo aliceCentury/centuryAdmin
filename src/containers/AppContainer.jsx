@@ -2,11 +2,10 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import _ from 'underscore'
-// import MenuComponent from '../components/Common/MenuComponent'
-import Navigation from '../components/Common/Navigation'
 import {push} from 'redux-router'
 import LoginContainer from '../containers/LoginContainer'
 import {logout, restoreFromToken} from '../actions/user'
+import Navigation from '../components/Common/Navigation'
 
 export function AppContainer(Component){
 	class MyComponent extends React.Component{
@@ -42,8 +41,9 @@ export function AppContainer(Component){
 			if(this.props.user.get('token')){
 				return (
 					<div>
-						<Navigation {...this.props} handleLogOut={this.handleLogOut.bind(this)} getMenu={this.getMenu.bind(this)}></Navigation>
-						<Component {...this.props}></Component>
+						<Navigation {...this.props} handleLogOut={this.handleLogOut.bind(this)}></Navigation>
+
+					   <Component {...this.props}></Component>
 					</div>
 				)
 			}else{
@@ -56,71 +56,80 @@ export function AppContainer(Component){
 
 		return {
 			user: state.getIn(["user"]),
-			"navigationDate": [{
-				"id": 2,
-				"name": "内容管理",
-				"link": "",
-				"menuDate": [{
+		  "menuDate": [{
 					"id": 1,
-					"name": "图说管理",
+					"name": "活动管理",
 					"icon": "desktop",
 					"childrenMenu": [{
 						"id": 2,
-						"name": "所有图说",
+						"name": "微信活动",
 						"icon": "book",
-						"link": "contentManage/tuso/all"
-
+						"link": "contentManage/avtivity/weChat"
 					}, {
 						"id": 3,
-						"name": "我的图说",
+						"name": "网页活动",
 						"icon": "calendar",
-						"link": "/contentManage/tuso/my"
+						// "link": "/contentManage/tuso/all"
+					}, {
+						"id": 4,
+						"name": "地推活动",
+						"icon": "calendar",
+						// "link": "/contentManage/tuso/all"
 					}]
 
 				},{
-					"id": 4,
-					"name": "用户管理",
-					"icon": "desktop",
-					"childrenMenu": [{
 						"id": 5,
-						"name": "马甲号管理",
-						"icon": "book",
-						"link": "contentManage/user/majia"
+						"name": "房源管理",
+						"icon": "desktop",
+						"childrenMenu": [{
+							"id": 6,
+							"name": "房源信息",
+							"icon": "book",
+							// "link": "contentManage/avtivity/weChat"
+						},{
+							"id": 7,
+							"name": "客户通讯录",
+							"icon": "book",
+							// "link": "contentManage/avtivity/weChat"
+						}]
 
-					}, {
-						"id": 6,
-						"name": "图说用户管理",
-						"icon": "calendar",
-						"link": "/contentManage/user/ordinary"
-					}, {
-						"id": 7,
-						"name": "意见箱",
-						"icon": "calendar",
-						"link": "/contentManage/user/draftBox"
-					}]
+					},{
+							"id": 8,
+							"name": "员工管理",
+							"icon": "desktop",
+							"childrenMenu": [{
+								"id": 9,
+								"name": "员工信息",
+								"icon": "book",
+								// "link": "contentManage/avtivity/weChat"
+							},{
+								"id": 10,
+								"name": "工资表",
+								"icon": "book",
+								// "link": "contentManage/avtivity/weChat"
+							}]
 
-				}
-				// ,{
-				// 	"id": 8,
-				// 	"name": "调研管理",
-				// 	"icon": "desktop",
-				// 	"childrenMenu": [{
-				// 		"id": 9,
-				// 		"name": "调研活动",
-				// 		"icon": "book",
-				// 		"link": "contentManage/research/activity"
-				//
-				// 	}, {
-				// 		"id": 10,
-				// 		"name": "调研结果",
-				// 		"icon": "calendar",
-				// 		"link": "/contentManage/research/result"
-				// 	}]
-				//
-				// }
+						},{
+								"id": 11,
+								"name": "员工交流",
+								"icon": "desktop",
+								"childrenMenu": [{
+									"id": 12,
+									"name": "通讯录",
+									"icon": "book",
+									// "link": "contentManage/avtivity/weChat"
+								},{
+									"id": 13,
+									"name": "工作心得",
+									"icon": "book",
+									// "link": "contentManage/avtivity/weChat"
+								}]
+
+							}
+
 			]
 
-			}]
+
 		}
 	}
 

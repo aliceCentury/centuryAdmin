@@ -11,11 +11,7 @@ class MyComponent extends React.Component {
         super(props)
     }
 
-    componentDidMount() {}
-
-    handleClick(e) {
-        // this.props.getMenu(e.key);
-    }
+    
     handleLogOut() {
         this.props.handleLogOut()
     }
@@ -26,15 +22,7 @@ class MyComponent extends React.Component {
                 <div className="ant-layout-topaside">
                     <div className="ant-layout-header">
                         <div className="ant-layout-wrapper">
-                            <Menu theme="white" mode="horizontal"
-                              onClick={this.handleClick.bind(this)} defaultSelectedKeys={['0']}
-                              style={{lineHeight: '54px'}}>
-                                {this.props.navigationDate.map((items, index) => {
-                                    return (
-                                        <Menu.Item key={index}>{items.name}</Menu.Item>
-                                    )
-                                })}
-                            </Menu>
+
                             <span className="userName">
                                 {this.props.user.get("nickname")},welcome back! <a onClick={this.handleLogOut.bind(this)}>退出登录</a></span>
 
