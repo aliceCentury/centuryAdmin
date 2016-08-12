@@ -1,0 +1,37 @@
+#react-root {
+    height: 100%;
+}
+:local(.root) {
+    background: #fff;
+    height: 100%;
+    .inner {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,.8);
+        .ant-card {
+            width: 500px;
+        }
+        .ant-card-head {
+            height: 80px;
+            line-height: 80px;
+            h3 {
+                text-align: center;
+                font-size: 20px;
+                font-weight: normal;
+            }
+        }
+        .ant-card-body {
+            padding: 40px 0 20px;
+        }
+        .ant-form-item-control {
+            button {
+                width: 100%;
+            }
+        }
+        .has-success.has-feedback:after {
+            content: '';
+        }
+    }
+}

@@ -1,0 +1,9 @@
+*.DS_Store
+node_modules/*
+dist/*.png
+dist/bundle.js
+*.js
+*.map
+bower_components
+.idea
+*npm*log*

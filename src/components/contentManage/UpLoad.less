@@ -1,0 +1,399 @@
+:local(.root){
+	width:756px;
+	height:314px;
+	position:relative;
+	margin:30px auto;
+	border:1px solid #ccc;
+	background:#fff;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	text-indent: 0!important;
+	z-index: 2;
+
+	.upLoadImg{
+		width:428px;
+		height:100%;
+		float:left;
+		position:relative;
+		background:#dfdfdf;
+		cursor:pointer;
+		box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+
+		input{
+			display:block;
+			width:100%;
+			height:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:0;
+			opacity:0;
+			cursor:pointer;
+		}
+
+		.addBt{
+			width:42px;
+			height:42px;
+			position:relative;
+			margin-top:115px;
+			margin-left:192px;
+
+			b{
+				background:#b2b2b2;
+				display:block;
+				&:nth-child(1){
+					width:42px;
+					height:4px;
+					position:absolute;
+					left:0;
+					top:50%;
+					transform:translateY(-50%);
+					-webkit-transform:translateY(-50%);
+					-moz-transform:translateY(-50%);
+					-o-transform:translateY(-50%);
+				}
+				&:nth-child(2){
+					width:4px;
+					height:42px;
+					position:absolute;
+					left:50%;
+					top:0;
+					transform:translateX(-50%);
+					-webkit-transform:translateX(-50%);
+					-moz-transform:translateX(-50%);
+					-o-transform:translateX(-50%);
+				}
+			}
+		}
+
+		p{
+			font-size:16px;
+			color:#000;
+			text-align:center;
+			line-height:1;
+			margin-top:42px;
+			font-family: "Heiti SC";
+		}
+
+		.loadImgHide{
+			display:none;
+		}
+
+		.loadImgShow{
+			width:100%;
+			height:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:10;
+			background-size:cover!important;
+
+			a{
+				color:#fff;
+				border:0;
+				display:inline-blick;
+				width:auto;
+				position:absolute;
+				line-height:1;
+				bottom:16px;
+				z-index:12;
+
+				&:nth-child(1){
+					left:16px;
+				}
+
+				&:nth-child(2){
+					left:106px;
+				}
+			}
+
+			div{
+				width:100%;
+				height:46px;
+				position:absolute;
+				bottom:0;
+				left:0;
+				z-index:11;
+				background: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.6), rgba(0,0,0,0));
+			}
+		}
+
+		.upLoadInput{
+			width:90px!important;
+			height:50px!important;
+			left:0!important;
+			bottom:0!important;
+			z-index:14!important;
+			top:unset!important;
+		}
+
+
+	}
+
+	.upLoadText{
+		width:326px;
+		height:312px;
+		float:left;
+		padding:0 23px;
+		box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		-moz-box-sizing:border-box;
+
+		.title{
+			width:100%;
+			height:62px;
+			border-bottom:1px solid #e5e5e5;
+			padding-top:14px;
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+
+			input{
+				width:100%;
+				height:100%;
+				font-size:16px;
+				text-align:center;
+				border:0;
+				background:#fff;
+				outline:none;
+				font-family: "Heiti SC";
+  				color: rgba(0, 0, 0, 0.8);
+  				box-sizing:border-box;
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+			}
+
+			::-webkit-input-placeholder{
+				color:#cacaca;
+				font-size:16px;
+			}
+
+			::-moz-input-placeholder{
+				color:#cacaca;
+				font-size:16px;
+			}
+
+			::-ms-input-placeholder{
+				color:#cacaca;
+				font-size:16px;
+			}
+		}
+
+		.content{
+			width:100%;
+			height:195px;
+			border-bottom:1px solid #e5e5e5;
+			padding:32px 0;
+			position:relative;
+			z-index:10;
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+
+			span{
+				font-size:16px;
+				color:#cacaca;
+				display:block;
+				width:100%;
+				overflow:hidden;
+				line-height:1;
+				position:absolute;
+				text-align:center;
+				left:0;
+				top:87px;
+				z-index:-1;
+			}
+
+			p,textarea{
+				width:100%;
+				height:131px;
+				resize:none;
+				border:0;
+				background:#fff;
+				outline:none;
+				font-family: "Heiti SC";
+  				color: rgba(0, 0, 0, 0.8);
+  				font-size:16px;
+  				line-height: 1.5;
+  				overflow-y:auto;
+  				background:transparent;
+  				position:absolute;
+  				top:32px;
+  				left:0;
+  				clear:both;
+			}
+
+			textarea{
+				z-index:15;
+			}
+
+			p{
+				z-index:14;
+				word-wrap: break-word;
+			}
+
+			.firstDown:first-letter{
+				font-size:2.6em;
+				float:left;
+				margin:-7px 5px -10px 0;
+			}
+
+			.defaultStyle{
+				text-align:left;
+			}
+
+			.centerStyle{
+				text-align:center;
+			}
+
+			::-webkit-input-placeholder{
+				color:#cacaca;
+				font-size:16px;
+				text-align:center;
+				line-height:130px;
+			}
+
+			::-moz-input-placeholder{
+				color:#cacaca;
+				font-size:16px;
+				text-align:center;
+				line-height:130px;
+			}
+
+			::-ms-input-placeholder{
+				color:#cacaca;
+				font-size:16px;
+				text-align:center;
+				line-height:130px;
+			}
+
+
+		}
+
+		.textControl{
+			width:100%;
+			overflow:hidden;
+			padding:18px 5px 0 5px;
+			position:relative;
+			box-sizing:border-box;
+			-webkit-box-sizing:border-box;
+			-moz-box-sizing:border-box;
+
+			img{
+				display:block;
+				height:16px;
+				cursor:pointer;
+				float:left;
+
+				&:nth-child(2){
+					position:absolute;
+					left:50%;
+					transform:translateX(-50%);
+					-webkit-transform:translateX(-50%);
+					-moz-transform:translateX(-50%);
+					-o-transform:translateX(-50%);
+					top:18px;
+				}
+
+				&:nth-child(3){
+					float:right;
+				}
+			}
+
+			.iconfont{
+				font-size: 20px;
+				opacity:0.5;
+				cursor:pointer;
+				float:left;
+
+				&:nth-child(2){
+					position:absolute;
+					left:50%;
+					transform:translateX(-50%);
+					-webkit-transform:translateX(-50%);
+					-moz-transform:translateX(-50%);
+					-o-transform:translateX(-50%);
+					top:18px;
+				}
+
+				&:nth-child(3){
+					float:right;
+				}
+			}
+		}
+	}
+
+	.boxControl{
+		width:64px;
+		height:314px;
+		position:absolute;
+		top:-1px;
+		right:-64px;
+		background:#b2b2b2;
+
+		button{
+			display:block;
+			width:100%;
+			height:34px;
+			font-size:16px;
+			color:#fff;
+			text-align:center;
+			line-height:34px;
+			border:0;
+			background:#b2b2b2;
+			outline:none;
+			position:absolute;
+			bottom:0;
+			right:0;
+			cursor:pointer;
+
+			&:nth-child(1){
+				bottom:64px;
+			}
+
+			&:nth-child(2){
+				bottom:20px;
+			}
+		}
+	}
+
+	.boxControlHide{
+		display:none;
+		width:64px;
+		height:314px;
+		position:absolute;
+		top:-1px;
+		right:-64px;
+		background:#b2b2b2;
+
+		button{
+			display:block;
+			width:100%;
+			height:34px;
+			font-size:16px;
+			color:#fff;
+			text-align:center;
+			line-height:34px;
+			border:0;
+			background:#b2b2b2;
+			outline:none;
+			position:absolute;
+			bottom:0;
+			right:0;
+			cursor:pointer;
+
+			&:nth-child(1){
+				bottom:64px;
+			}
+
+			&:nth-child(2){
+				bottom:20px;
+			}
+		}
+	}
+
+
+}

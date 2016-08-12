@@ -1,0 +1,186 @@
+:local(.root) {
+    width: 100%;
+    // overflow: hidden;
+    height: 100%;
+    .upLoadBox {
+        width: 100%;
+        height: 18vw;
+        overflow: hidden;
+        background-size: cover!important;
+        float: left;
+        input {
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+    }
+    .commonCard {
+        width: 30vw;
+        overflow: hidden;
+        position: relative;
+        z-index: 10;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        background: #fff;
+        padding: 5px;
+        h1 {
+            width: 80%;
+            overflow: hidden;
+            text-align: center;
+            font-size: 1.5vw;
+            font-weight: 300;
+            height: 15%;
+            padding: 3% 0;
+            border-bottom: 1px solid #eee;
+            margin: 0 auto;
+        }
+        p {
+            width: 80%;
+            overflow: hidden;
+            margin: 0 auto;
+            font-size: 1vw;
+            font-weight: 300;
+            line-height: 1.5;
+            padding: 12px 0;
+        }
+    }
+    .card {
+        width: 100%;
+        height: 400px;
+        cursor: pointer;
+        position: relative;
+        z-index: 10;
+        // top:50%;
+        // left:50%;
+        // transform:translate(-50%,-50%);
+        // -webkit-transform:translate(-50%,-50%);
+        // -moz-transform:translate(-50%,-50%);
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        position: relative;
+        perspective: 1000px;
+        -moz-transform: perspective(3000px);
+        -moz-transform-style: preserve-3d;
+        .cardContent {
+            transform-style: preserve-3d;
+            background: #ffffff;
+            transition: all 0.5s ease-in-out;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            position: relative;
+            -moz-transform: perspective(3000px);
+        }
+        .front {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            z-index: 2;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            opacity: 1;
+            height: 400px;
+            background: #ffffff;
+            .cardImg {
+                width: 100%;
+                background-size: cover!important;
+                height: 85%;
+                border: 3px solid #fff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                padding: 5px;
+            }
+            .cardImgFull {
+                height: 100%;
+                width: 100%;
+                background-size: cover!important;
+                border: 3px solid #fff;
+                box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                padding: 5px;
+            }
+            h1 {
+                width: 100%;
+                background: #ffffff;
+                text-align: center;
+                font-size: 1.5vw;
+                font-weight: 300;
+                margin-top: 8px;
+                b {
+                    font-weight: 300;
+                    display: block;
+                    width: 100%;
+                    overflow: hidden;
+                    position: relative;
+                    line-height: 1;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    -webkit-transform: translateY(-50%);
+                    -moz-transform: translateY(-50%);
+                }
+            }
+        }
+        .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+            color: #000;
+            width: 100%;
+            height: 400px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            transform: rotateY(-180deg);
+            -webkit-transform: rotateY(-180deg);
+            -moz-transform: rotateY(-180deg);
+            opacity: 1;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            padding: 0 20px;
+            span {
+                display: block;
+                width: 100%;
+                overflow: hidden;
+                line-height: 1.75;
+                font-size: 1vw;
+            }
+            .textLeft {
+                text-align: left;
+            }
+
+            .textCenter {
+                text-align: center;
+            }
+            .textSkin{
+              text-align: left;
+            }
+          .textSkin:first-letter{
+    display: block;
+    float: left;
+    font-weight: bold;
+    font-size: 1.9em;
+    font-family: Georgia, Times New Roman, serif;
+            }
+            h1 {
+                width: 100%;
+                overflow: hidden;
+                padding: 4% 0;
+                text-align: center;
+                font-size: 1.5vw;
+                border-bottom: 1px solid #eee;
+                margin-bottom: 20px;
+                font-weight: 300;
+            }
+        }
+    }
+}

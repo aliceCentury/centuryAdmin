@@ -1,0 +1,50 @@
+/* 使用 css 技巧来动态设置的对话框位置 */
+.vertical-center-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vertical-center-modal .ant-modal {
+  top: 0;
+}
+
+.viewEssay .ant-modal-content{
+	background-color:transparent!important;
+}
+
+.viewEssay .ant-modal-footer{
+	border:0!important;
+}
+
+.viewEssay .ant-modal-close{
+	position:fixed!important;
+	color:#fff!important;
+	right:30px;
+}
+
+.viewEssay .ant-modal-close span{
+	font-size: 25px;
+}
+
+.viewEssay .ant-modal,.viewEssay .ant-modal .ant-modal-content,.viewEssay .ant-modal .ant-modal-body{
+  width:100%!important;
+  height: 100%;
+}
+
+.addEssay .ant-modal{
+	width:600px!important;
+}
+
+.myTuso .ant-modal{
+	width:800px!important;
+}
+
+.createSuccess .ant-confirm-btns{
+	display:none!important;
+}
+
+.createSuccess button{
+	float:right;
+	margin: 25px 0 0 12px;
+}
